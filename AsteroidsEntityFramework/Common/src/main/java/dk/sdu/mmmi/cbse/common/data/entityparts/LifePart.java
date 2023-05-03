@@ -45,18 +45,18 @@ public class LifePart implements EntityPart {
         return expiration;
     }
 
+    public boolean isDead() {
+        return this.dead;
+    }
+
     public void setExpiration(float expiration) {
         this.expiration = expiration;
-    }  
-    
+    }
+
     public void reduceExpiration(float delta){
         this.expiration -= delta;
     }
 
-    public boolean isDead(){
-        return this.dead;
-    }
-    
     @Override
     public void process(GameData gameData, Entity entity) {
         if (this.isHit) {

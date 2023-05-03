@@ -18,12 +18,18 @@ public class CollisionDetector implements IPostEntityProcessingService {
 
                 LifePart hitterEntityLifePart = hitterEntity.getPart(LifePart.class);
                 LifePart collidedEntityLifePart = hitterEntity.getPart(LifePart.class);
-
-                if (
-                        hitterEntityLifePart.getLife() > 0
-                                && this.collides(hitterEntity, collidedEntity)) {
-                    hitterEntityLifePart.setIsHit(true);
+                // Check if both entities have a LifePart bc problem with null-pointers
+                try {
+                    if (
+                            hitterEntityLifePart.getLife() > 0
+                                    && this.collides(hitterEntity, collidedEntity)) {
+                        hitterEntityLifePart.setIsHit(true);
+                    }
+                } catch (NullPointerException e) {
+                    // Do nothing
+                    System.out.println("CollisionDetector: NullPointerException");
                 }
+
             }
         }
     }
