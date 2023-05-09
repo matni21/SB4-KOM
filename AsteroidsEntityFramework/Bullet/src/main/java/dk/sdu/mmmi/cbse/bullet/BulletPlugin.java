@@ -1,6 +1,5 @@
 package dk.sdu.mmmi.cbse.bullet;
 
-import com.badlogic.gdx.math.MathUtils;
 import dk.sdu.mmmi.cbse.common.data.Color;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
@@ -49,10 +48,13 @@ public class BulletPlugin implements IGamePluginService, IBulletCreator {
 
         bullet.setRadius(1);
 
-        float bx = (float) MathUtils.cos(radians) * this.shooter.getRadius() * bullet.getRadius();
-        float x = bx + shooterPosition.getX();
-        float by = (float) MathUtils.sin(radians) * this.shooter.getRadius() * bullet.getRadius();
-        float y = by + shooterPosition.getY();
+        float dx = (float) (Math.cos(radians) * shooter.getRadius());
+        float dy = (float) (Math.sin(radians) * shooter.getRadius());
+
+        float bx = (float) Math.cos(radians) * shooter.getRadius() * bullet.getRadius();
+        float x = bx + shooterPosition.getX() + dx;
+        float by = (float) Math.sin(radians) * shooter.getRadius() * bullet.getRadius();
+        float y = by + shooterPosition.getY() + dy;
         float shootSpeed = 350 + (shooterMovement.getSpeed());
 
         bullet.setShapeX(new float[4]);
@@ -67,12 +69,6 @@ public class BulletPlugin implements IGamePluginService, IBulletCreator {
 
     @Override
     public void stop(GameData gameData, World world) {
-        /*for (Entity e : world.getEntities()) {
-            if (e.getClass() == Bullet.class) {
-                world.removeEntity(e);
-            }
-        }
-         */
         world.removeEntity(bullet);
     }
 
