@@ -4,12 +4,14 @@ import dk.sdu.mmmi.cbse.common.data.Color;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
+import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.ShootingPart;
+import dk.sdu.mmmi.cbse.common.services.IBulletCreator;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 
-public class PlayerPlugin implements IGamePluginService {
+public class PlayerPlugin implements IGamePluginService{
 
     private Entity player;
 
@@ -24,6 +26,15 @@ public class PlayerPlugin implements IGamePluginService {
         world.addEntity(player);
     }
 
+    /**
+     * Create player ship entity with default data and parts
+     * <br />
+     * Pre-condition: New player entity has to be created for the game <br />
+     * Post-condition: Player entity, that has default parameters and parts
+     *
+     * @param gameData Data for the game
+     * @return Player entity with default parameters and parts
+     */
     private Entity createPlayerShip(GameData gameData) {
 
         float deacceleration = 10;
@@ -37,8 +48,9 @@ public class PlayerPlugin implements IGamePluginService {
         Entity playerShip = new Player();
         playerShip.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed, 0));
         playerShip.add(new PositionPart(x, y, radians));
+        playerShip.add(new LifePart(5, 0));
         playerShip.setColor(new Color(0,1,0,1));
-        playerShip.add(new ShootingPart(0.1f));
+        playerShip.add(new ShootingPart(0.05f));
         
         return playerShip;
     }

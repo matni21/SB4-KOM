@@ -8,12 +8,15 @@ import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
+import dk.sdu.mmmi.cbse.common.services.IBulletCreator;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 
-public class BulletPlugin implements IGamePluginService {
+public class BulletPlugin implements IGamePluginService, IBulletCreator {
 
     private Entity bullet;
     private Entity shooter;
+
+    public BulletPlugin() {this(null);}
 
     public BulletPlugin(Entity shooter) {
         this.shooter = shooter;
@@ -21,8 +24,6 @@ public class BulletPlugin implements IGamePluginService {
 
     @Override
     public void start(GameData gameData, World world) {
-        bullet = createBullet(gameData);
-        world.addEntity(bullet);
     }
 
     /**
@@ -66,7 +67,18 @@ public class BulletPlugin implements IGamePluginService {
 
     @Override
     public void stop(GameData gameData, World world) {
-        // Remove entities
+        /*for (Entity e : world.getEntities()) {
+            if (e.getClass() == Bullet.class) {
+                world.removeEntity(e);
+            }
+        }
+         */
         world.removeEntity(bullet);
+    }
+
+    @Override
+    public Entity create(Entity shooter, GameData gameData) {
+        this.shooter = shooter;
+        return this.createBullet(gameData);
     }
 }

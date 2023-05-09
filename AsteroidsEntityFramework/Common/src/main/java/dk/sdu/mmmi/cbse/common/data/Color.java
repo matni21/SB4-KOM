@@ -18,11 +18,27 @@ public class Color {
      */
     private float a;
 
+    /**
+     * Takes a red, green, blue and alpha value
+     *
+     */
     public Color(float r, float g, float b, float a) {
         this.r = r;
         this.g = g;
         this.b = b;
         this.a = a;
+    }
+
+    public void takeDamage(Entity entity){
+        //flash white and red in a for loop
+        Color originalColor = entity.getColor();
+        for (int i = 0; i < 10; i++) {
+            Color color = new Color(1, 1, 0, 1);
+            entity.setColor(color);
+            Color color2 = new Color(1, 0, 0, 1);
+            entity.setColor(color2);
+        }
+        entity.setColor(originalColor);
     }
 
     /**
