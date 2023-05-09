@@ -24,11 +24,6 @@ public class BulletPlugin implements IGamePluginService, IBulletCreator {
 
     @Override
     public void start(GameData gameData, World world) {
-//        if (bullet != null) {
-//            bullet = createBullet(gameData);
-//            world.addEntity(bullet);
-//        }
-
     }
 
     /**
@@ -72,11 +67,13 @@ public class BulletPlugin implements IGamePluginService, IBulletCreator {
 
     @Override
     public void stop(GameData gameData, World world) {
-        for (Entity e : world.getEntities()) {
+        /*for (Entity e : world.getEntities()) {
             if (e.getClass() == Bullet.class) {
                 world.removeEntity(e);
             }
         }
+         */
+        world.removeEntity(bullet);
     }
 
     @Override

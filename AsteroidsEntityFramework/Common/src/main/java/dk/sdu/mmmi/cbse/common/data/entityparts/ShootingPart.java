@@ -9,6 +9,8 @@ public class ShootingPart implements EntityPart{
     private float cooldown;
     private boolean shooting;
 
+    private String bulletClass;
+
     public ShootingPart(float cooldownTime) {
         this.cooldownTime = cooldownTime;
     }
@@ -24,6 +26,7 @@ public class ShootingPart implements EntityPart{
             return;
         }
 
+        System.out.println("Shooting");
         this.shooting = true;
         this.cooldown = this.cooldownTime;
     }

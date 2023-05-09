@@ -50,7 +50,7 @@ public class PlayerPlugin implements IGamePluginService{
         playerShip.add(new PositionPart(x, y, radians));
         playerShip.add(new LifePart(5, 0));
         playerShip.setColor(new Color(0,1,0,1));
-        playerShip.add(new ShootingPart(0.1f));
+        playerShip.add(new ShootingPart(0.05f));
         
         return playerShip;
     }

@@ -1,5 +1,6 @@
 package dk.sdu.mmmi.cbse.collision;
 
+import dk.sdu.mmmi.cbse.common.data.Color;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
@@ -8,6 +9,7 @@ import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
 import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
 
 public class CollisionDetector implements IPostEntityProcessingService {
+    Color color = new Color(1, 1, 1, 1);
         @Override
         public void process(GameData gameData, World world) {
             // two for loops for all entities in the world
@@ -26,6 +28,9 @@ public class CollisionDetector implements IPostEntityProcessingService {
                     // CollisionDetection
                     if (this.collides(entity, collisionDetection)) {
                         // if entity has been hit, and should have its life reduced
+                        //entity.setColor(color);
+                        color.takeDamage(entity);
+                        color.takeDamage(collisionDetection);
                         if (entityLife.getLife() > 0) {
                             entityLife.setLife(entityLife.getLife() - 1);
                             entityLife.setIsHit(true);
