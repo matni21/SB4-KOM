@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9fff6132-43dc-4eff-8a95-65ae699be438" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/AsteroidsEntityFramework/Asteroid/src/main/java/dk/sdu/mmmi/cbse/asteroid/AsteroidPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/AsteroidsEntityFramework/Asteroid/src/main/java/dk/sdu/mmmi/cbse/asteroid/AsteroidPlugin.java" afterDir="false" />
-    </list>
+    <list default="true" id="9fff6132-43dc-4eff-8a95-65ae699be438" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,6 +39,7 @@
       <workItem from="1683623241835" duration="9000" />
       <workItem from="1683627751784" duration="11000" />
       <workItem from="1683705225781" duration="24000" />
+      <workItem from="1683827897160" duration="7000" />
     </task>
     <servers />
   </component>

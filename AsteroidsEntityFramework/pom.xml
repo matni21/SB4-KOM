@@ -5,6 +5,7 @@
     <artifactId>AsteroidsEntityFramework</artifactId>
     <version>1.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <name>AsteroidsEntityFramework</name>
     <modules>
         <module>Asteroid</module>
         <module>Collision</module>

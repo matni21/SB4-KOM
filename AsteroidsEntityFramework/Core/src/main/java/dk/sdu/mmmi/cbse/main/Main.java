@@ -1,22 +1,24 @@
 package dk.sdu.mmmi.cbse.main;
 
-import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
-import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 
 public class Main {
 	
 	public static void main(String[] args) {
 		
-		LwjglApplicationConfiguration cfg =
-			new LwjglApplicationConfiguration();
-		cfg.title = "Asteroids";
-		cfg.width = 500;
-		cfg.height = 400;
-		cfg.useGL30 = false;
-		cfg.resizable = false;
-		
-		new LwjglApplication(new Game(), cfg);
-		
+		Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
+		cfg.setTitle("Asteroids");
+		int width = 1800;
+		int height = 1200;
+		cfg.setWindowSizeLimits(width,height,width,height);
+		cfg.setWindowedMode(width, height);
+		cfg.setResizable(false);
+
+		new Lwjgl3Application(new Game(), cfg);
+
+
 	}
 	
 }
