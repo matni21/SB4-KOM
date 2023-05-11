@@ -12,7 +12,7 @@ import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 
 
 public class AsteroidPlugin implements IGamePluginService {
-
+    // Asteroid entity
     private Entity asteroid;
     private int life;
     private float deacceleration, acceleration, maxSpeed, rotationSpeed;

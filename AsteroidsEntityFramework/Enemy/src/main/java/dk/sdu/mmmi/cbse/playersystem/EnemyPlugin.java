@@ -1,6 +1,5 @@
 package dk.sdu.mmmi.cbse.playersystem;
 
-import com.badlogic.gdx.math.MathUtils;
 import dk.sdu.mmmi.cbse.common.data.Color;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
@@ -11,7 +10,6 @@ import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.ShootingPart;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 
-import java.awt.*;
 
 public class EnemyPlugin implements IGamePluginService {
 
@@ -19,6 +17,10 @@ public class EnemyPlugin implements IGamePluginService {
 
     public EnemyPlugin() {
 
+    }
+
+    private float getRandomNumber(float min, float max) {
+        return (float) ((Math.random() * (max - min)) + min);
     }
 
     @Override
@@ -44,9 +46,9 @@ public class EnemyPlugin implements IGamePluginService {
         float acceleration = 150;
         float maxSpeed = 200;
         float rotationSpeed = 5;
-        float x = MathUtils.random(0, gameData.getDisplayWidth());
-        float y = MathUtils.random(0, gameData.getDisplayHeight());
-        float radians = MathUtils.random(0f, (float) (2 * Math.PI));
+        float x = this.getRandomNumber(0, gameData.getDisplayWidth());
+        float y = this.getRandomNumber(0, gameData.getDisplayHeight());
+        float radians = this.getRandomNumber(0f, (float) (2 * Math.PI));
 
         Entity enemyShip = new Enemy();
 

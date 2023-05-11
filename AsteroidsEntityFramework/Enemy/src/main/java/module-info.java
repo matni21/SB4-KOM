@@ -2,6 +2,8 @@ import dk.sdu.mmmi.cbse.common.services.IBulletCreator;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.common.util.SPILocator;
+import dk.sdu.mmmi.cbse.playersystem.EnemyPlugin;
+import dk.sdu.mmmi.cbse.playersystem.EnemyControlSystem;
 
 module Enemy {
     requires Common;
@@ -9,6 +11,6 @@ module Enemy {
     uses SPILocator;
     uses IBulletCreator;
 
-    provides IGamePluginService with dk.sdu.mmmi.cbse.playersystem.EnemyPlugin;
-    provides IEntityProcessingService with dk.sdu.mmmi.cbse.playersystem.EnemyControlSystem;
+    provides IGamePluginService with EnemyPlugin;
+    provides IEntityProcessingService with EnemyControlSystem;
 }
