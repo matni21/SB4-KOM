@@ -108,6 +108,7 @@ public class AsteroidPlugin implements IGamePluginService {
             float startSpeed = (float) ((Math.random() * (75f - currentSpeed)) + currentSpeed);
 
             this.buildAsteroid(gameData, splittetAsteroid, x, y, radians, startSpeed);
+            System.out.println("asteroid is splitting");
 
             world.addEntity(splittetAsteroid);
         }
@@ -152,10 +153,10 @@ public class AsteroidPlugin implements IGamePluginService {
                 radius = 10;
                 break;
             case 2:
-                radius = 15;
+                radius = 20;
                 break;
             case 3:
-                radius = 25;
+                radius = 30;
                 break;
             default:
                 break;

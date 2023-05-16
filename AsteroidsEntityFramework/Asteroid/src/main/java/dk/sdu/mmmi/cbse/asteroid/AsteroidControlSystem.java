@@ -10,7 +10,7 @@ import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 
 /**
- * Asteroid control system, that control the movement and behavior of all asteroids.
+ * Asteroid control system, which controls all asteroids' movement, parameters and splitting.
  */
 public class AsteroidControlSystem implements IEntityProcessingService {
     @Override
@@ -45,17 +45,18 @@ public class AsteroidControlSystem implements IEntityProcessingService {
      * @param asteroid The asteroid that needs to be checked and handled
      */
     private void handleAsteroidSplitting(GameData gameData, World world, Entity asteroid) {
-        // Get parts
+        // Get asteroid parts
         LifePart lifePart = asteroid.getPart(LifePart.class);
 
-        // Do not continue if not hit or already dead
+        // Discontinue if not hit or already dead
         if (!lifePart.isIsHit() || lifePart.isDead()) {
             return;
         }
 
-        // Create new asteroids through plugin
+        // Create new split asteroids
         AsteroidPlugin asteroidPlugin = new AsteroidPlugin();
         asteroidPlugin.createSplittetAsteroid(gameData, world, asteroid);
+
 
         return;
     }

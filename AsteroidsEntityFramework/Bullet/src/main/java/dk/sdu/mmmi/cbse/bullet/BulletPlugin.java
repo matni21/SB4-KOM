@@ -13,30 +13,28 @@ import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 public class BulletPlugin implements IGamePluginService, IBulletCreator {
 
     private Entity bullet;
-    private Entity shooter;
 
-    public BulletPlugin() {this(null);}
+    public BulletPlugin() {}
 
-    public BulletPlugin(Entity shooter) {
-        this.shooter = shooter;
-    }
 
     @Override
     public void start(GameData gameData, World world) {
+        //bullet = createBullet(gameData, shooter);
+        //world.addEntity(bullet);
     }
 
     /**
-     * Create bullet entity with default parameters based on shooter
+     * Create bullet Entity with default parameters based on the shooter
      * <br />
-     * Pre-condition: New bullet entity has to be created for the game from a shooter <br />
+     * Pre-condition: New bullet entity needs to be created from a shooter <br />
      * Post-condition: Bullet entity, that has parameters, such that it is shot from shooter
      *
      * @param gameData Data for the game
      * @return Bullet entity with initial data from shooter
      */
-    private Entity createBullet(GameData gameData) {
-        PositionPart shooterPosition = this.shooter.getPart(PositionPart.class);
-        MovingPart shooterMovement = this.shooter.getPart(MovingPart.class);
+    private Entity createBullet(GameData gameData, Entity shooter) {
+        PositionPart shooterPosition = shooter.getPart(PositionPart.class);
+        MovingPart shooterMovement = shooter.getPart(MovingPart.class);
 
         float deacceleration = 0;
         float acceleration = 0;
@@ -74,7 +72,6 @@ public class BulletPlugin implements IGamePluginService, IBulletCreator {
 
     @Override
     public Entity create(Entity shooter, GameData gameData) {
-        this.shooter = shooter;
-        return this.createBullet(gameData);
+        return this.createBullet(gameData, shooter);
     }
 }

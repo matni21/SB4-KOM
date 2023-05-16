@@ -1,6 +1,5 @@
 package dk.sdu.mmmi.cbse.collision;
 
-import dk.sdu.mmmi.cbse.common.data.Color;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
@@ -9,7 +8,6 @@ import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
 import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
 
 public class CollisionDetector implements IPostEntityProcessingService {
-    Color color = new Color(1, 1, 1, 1);
         @Override
         public void process(GameData gameData, World world) {
             // two for loops for all entities in the world
@@ -21,38 +19,32 @@ public class CollisionDetector implements IPostEntityProcessingService {
                     // if the two entities are identical, skip the iteration
                     if (entity.getID().equals(collisionDetection.getID())) {
                         continue;
-
                         // remove entities with zero in expiration
                     }
 
                     // CollisionDetection
-                    if (this.collides(entity, collisionDetection)) {
-                        // if entity has been hit, and should have its life reduced
-                        //entity.setColor(color);
-                        color.takeDamage(entity);
-                        color.takeDamage(collisionDetection);
-                        if (entityLife.getLife() > 0) {
-                            entityLife.setLife(entityLife.getLife() - 1);
-                            entityLife.setIsHit(true);
-                            // if entity is out of life - remove
-                            if (entityLife.getLife() <= 0) {
-                                world.removeEntity(entity);
-                            }
-                        }
+                    LifePart entityLifePart = entity.getPart(LifePart.class);
+
+                    if (entityLifePart.getLife() > 0 && this.collides(entity, collisionDetection)) {
+                        entityLifePart.setIsHit(true);
+                        System.out.println("Collision detected between " + entity.getClass() + " and " + collisionDetection.getClass());
                     }
                 }
             }
         }
 
-        public Boolean collides(Entity entity, Entity entity2) {
-            PositionPart entMov = entity.getPart(PositionPart.class);
+        public Boolean collides(Entity entity1, Entity entity2) {
+            // get position parts on entities
+            PositionPart entMov1 = entity1.getPart(PositionPart.class);
             PositionPart entMov2 = entity2.getPart(PositionPart.class);
-            float dx = (float) entMov.getX() - (float) entMov2.getX();
-            float dy = (float) entMov.getY() - (float) entMov2.getY();
-            float distance = (float) Math.sqrt(dx * dx + dy * dy);
-            if (distance < (entity.getRadius() + entity2.getRadius())) {
-                return true;
-            }
-            return false;
+
+            // get distance between entities
+            float dx = (float) entMov1.getX() - (float) entMov2.getX();
+            float dy = (float) entMov1.getY() - (float) entMov2.getY();
+            float distanceBetween = (float) Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+
+            // Check if distance is less than the two radius', which means they are hitting each other
+            float collisionDistance = entity1.getRadius() + entity2.getRadius();
+            return distanceBetween < collisionDistance;
         }
 }

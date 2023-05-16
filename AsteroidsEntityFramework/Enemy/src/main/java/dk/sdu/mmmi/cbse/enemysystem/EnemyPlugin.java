@@ -26,9 +26,10 @@ public class EnemyPlugin implements IGamePluginService {
     @Override
     public void start(GameData gameData, World world) {
 
-        // Add entities to the world
-        enemy = createEnemyShip(gameData);
-        world.addEntity(enemy);
+        // Add random amount entities to the world
+        for (int i = 0; i < this.getRandomNumber(3, 5); i++) {
+            world.addEntity(this.createEnemyShip(gameData));
+        }
     }
 
     /**
@@ -58,7 +59,7 @@ public class EnemyPlugin implements IGamePluginService {
         enemyShip.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed, 20));
         enemyShip.add(new PositionPart(x, y, radians));
         enemyShip.add(new LifePart(1, 0));
-        enemyShip.add(new ShootingPart(0.3f));
+        enemyShip.add(new ShootingPart(0.2f));
 
         return enemyShip;
     }
@@ -66,6 +67,8 @@ public class EnemyPlugin implements IGamePluginService {
     @Override
     public void stop(GameData gameData, World world) {
         // Remove entities
-        world.removeEntity(enemy);
+        for (Entity enemy : world.getEntities(Enemy.class)) {
+            world.removeEntity(enemy);
+        }
     }
 }

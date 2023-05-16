@@ -8,7 +8,6 @@ import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.ShootingPart;
-import dk.sdu.mmmi.cbse.common.services.IBulletCreator;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 
 public class PlayerPlugin implements IGamePluginService{
@@ -20,7 +19,6 @@ public class PlayerPlugin implements IGamePluginService{
 
     @Override
     public void start(GameData gameData, World world) {
-        
         // Add entities to the world
         player = createPlayerShip(gameData);
         world.addEntity(player);
@@ -36,7 +34,6 @@ public class PlayerPlugin implements IGamePluginService{
      * @return Player entity with default parameters and parts
      */
     private Entity createPlayerShip(GameData gameData) {
-
         float deacceleration = 10;
         float acceleration = 200;
         float maxSpeed = 300;
@@ -44,8 +41,11 @@ public class PlayerPlugin implements IGamePluginService{
         float x = gameData.getDisplayWidth() / 2;
         float y = gameData.getDisplayHeight() / 2;
         float radians = 3.1415f / 2;
-        
+
+        //Remember to always set() everything for a shooter entity,
+        // fx without a radius, the entity will be null, and bullets cannot be drawn.
         Entity playerShip = new Player();
+        playerShip.setRadius(8);
         playerShip.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed, 0));
         playerShip.add(new PositionPart(x, y, radians));
         playerShip.add(new LifePart(5, 0));
