@@ -38,6 +38,7 @@ public class SPILocator {
             }
         }
 
+        // Print statement when since loader is not null
         if (printStatement) {
             System.out.println("Found " + list.size() + " implementations for interface: " + service.getName());
         }

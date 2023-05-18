@@ -43,7 +43,6 @@ public class BulletPlugin implements IGamePluginService, IBulletCreator {
         float radians = shooterPosition.getRadians();
 
         Entity bullet = new Bullet();
-
         bullet.setRadius(1);
 
         float dx = (float) (Math.cos(radians) * shooter.getRadius());

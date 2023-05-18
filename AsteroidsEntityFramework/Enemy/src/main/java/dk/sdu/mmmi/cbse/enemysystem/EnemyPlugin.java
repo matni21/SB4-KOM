@@ -54,19 +54,18 @@ public class EnemyPlugin implements IGamePluginService {
         Entity enemyShip = new Enemy();
 
         enemyShip.setRadius(10);
-
         enemyShip.setColor(new Color(1,0,0,1));
         enemyShip.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed, 20));
         enemyShip.add(new PositionPart(x, y, radians));
         enemyShip.add(new LifePart(1, 0));
-        enemyShip.add(new ShootingPart(0.2f));
+        enemyShip.add(new ShootingPart(0.1f));
 
         return enemyShip;
     }
 
     @Override
     public void stop(GameData gameData, World world) {
-        // Remove entities
+        // Remove entity
         for (Entity enemy : world.getEntities(Enemy.class)) {
             world.removeEntity(enemy);
         }

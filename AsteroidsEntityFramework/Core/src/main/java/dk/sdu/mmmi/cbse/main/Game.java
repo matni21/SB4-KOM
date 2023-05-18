@@ -9,7 +9,6 @@ import dk.sdu.mmmi.cbse.common.data.Color;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
-import dk.sdu.mmmi.cbse.common.services.IBulletCreator;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
@@ -18,8 +17,7 @@ import dk.sdu.mmmi.cbse.common.util.SPILocator;
 
 import java.util.Collection;
 
-public class Game
-        implements ApplicationListener {
+public class Game implements ApplicationListener {
 
     private static OrthographicCamera cam;
     private ShapeRenderer sr;
@@ -29,7 +27,6 @@ public class Game
 
     @Override
     public void create() {
-
         gameData.setDisplayWidth(Gdx.graphics.getWidth());
         gameData.setDisplayHeight(Gdx.graphics.getHeight());
 
@@ -51,7 +48,6 @@ public class Game
 
     @Override
     public void render() {
-
         // clear screen to black
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -59,7 +55,6 @@ public class Game
         gameData.setDelta(Gdx.graphics.getDeltaTime());
 
         update();
-
         draw();
 
         gameData.getKeys().update();
@@ -77,10 +72,8 @@ public class Game
 
     private void draw() {
         for (Entity entity : world.getEntities()) {
-
             Color color = entity.getColor();
             sr.setColor(color.getR(), color.getG(), color.getB(), color.getA());
-
             sr.begin(ShapeRenderer.ShapeType.Line);
 
             float[] shapex = entity.getShapeX();
@@ -92,7 +85,6 @@ public class Game
 
                 sr.line(shapex[i], shapey[i], shapex[j], shapey[j]);
             }
-
             sr.end();
         }
     }

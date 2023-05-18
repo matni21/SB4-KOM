@@ -12,7 +12,7 @@ public interface IPostEntityProcessingService  {
          * Process entity after all ordinary processing.<br />
          * This can be for collision detection or similar elements, that needs to be processed after all entities has been processed.
          * <br />
-         * Pre-condition: A game tick has passed since last call and all entities has been processed.<br />
+         * Pre-condition: The game has parsed at least once since last call and all entities have been processed.<br />
          * Post-condition: The entity has been processed and updated.
          *
          * @param gameData Data for the game

@@ -35,10 +35,10 @@ public class AsteroidControlSystem implements IEntityProcessingService {
     }
 
     /**
-     * Handle asteroid splitting, by checking if it is needing, and doing if it is.
+     * Handle asteroid splitting, by checking if it needs to split.
      * <br>
-     * Pre-condition: Asteroid is present in the game board, and that the asteroid has life part. <br />
-     * post-condition: If the asteroid is not in splitting stage, nothing is done, else splittet asteroids are created.
+     * Pre-condition: Asteroid is present in the game, and has life part. <br />
+     * post-condition: Splitted asteroids are created if it isnt in splitting stage.
      *
      * @param gameData Data for the game
      * @param world World of the game
@@ -62,12 +62,12 @@ public class AsteroidControlSystem implements IEntityProcessingService {
     }
 
     /**
-     * Update the shape of entity
+     * Update the shape of Entity
      * <br />
-     * Pre-condition: An entity that can be drawn, and a game tick has passed since last call for entity <br />
-     * Post-condition: Updated shape location for the entity
+     * Pre-condition: An entity that can be drawn, and the game has parsed once since last call for that entity <br />
+     * Post-condition: An updated shape location for the entity
      *
-     * @param entity Entity to update shape of
+     * @param entity Entity to update shape for
      */
     private void updateShape(Entity entity) {
         float[] shapeX = entity.getShapeX();
@@ -84,13 +84,13 @@ public class AsteroidControlSystem implements IEntityProcessingService {
         switch (lifePart.getLife()) {
             default:
             case 1:
-                distances = new float[] {10, 8, 10, 6, 2, 10, 9, 10};
+                distances = new float[] {12, 10, 12, 8, 4, 12, 11, 12};
                 break;
             case 2:
-                distances = new float[] {18, 5, 15, 10, 18, 18, 15, 18};
+                distances = new float[] {20, 7, 17, 12, 20, 20, 17, 19};
                 break;
             case 3:
-                distances = new float[] {25, 20, 23, 21, 26, 18, 25, 25};
+                distances = new float[] {27, 25, 23, 21, 21, 23, 25, 27};
                 break;
         }
 

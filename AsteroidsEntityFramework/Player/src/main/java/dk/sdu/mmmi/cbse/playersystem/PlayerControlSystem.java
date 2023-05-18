@@ -39,6 +39,7 @@ public class PlayerControlSystem implements IEntityProcessingService {
             shootingPart.process(gameData, player);
             lifePart.process(gameData, player);
 
+            //Set shooting to true if space is pressed
             shootingPart.setShooting(gameData.getKeys().isDown(GameKeys.SPACE));
             if (shootingPart.getShooting()) {
                 Collection<IBulletCreator> bulletPlugins = SPILocator.locateAll(IBulletCreator.class);
@@ -57,10 +58,10 @@ public class PlayerControlSystem implements IEntityProcessingService {
     }
 
     /**
-     * Update the shape of entity
+     * Update the shape of Entity
      * <br />
-     * Pre-condition: An entity that can be drawn, and a game tick has passed since last call for entity <br />
-     * Post-condition: Updated shape location for the entity
+     * Pre-condition: An entity that can be drawn, and the game has parsed once since last call for that entity <br />
+     * Post-condition: An updated shape location for that entity
      *
      * @param entity Entity to update shape of
      */

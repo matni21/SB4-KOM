@@ -30,10 +30,10 @@ public class BulletControlSystem implements IEntityProcessingService {
     }
 
     /**
-     * Update the shape of entity
+     * Update the shape of Entity
      * <br />
-     * Pre-condition: An entity that can be drawn, and a game tick has passed since last call for entity <br />
-     * Post-condition: Updated shape location for the entity
+     * Pre-condition: An entity that can be drawn, and the game has parsed once since last call for that entity <br />
+     * Post-condition: An updated shape location for the entity
      *
      * @param entity Entity to update shape of
      */

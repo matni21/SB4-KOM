@@ -24,7 +24,6 @@ public class CollisionDetector implements IPostEntityProcessingService {
 
                     // CollisionDetection
                     LifePart entityLifePart = entity.getPart(LifePart.class);
-
                     if (entityLifePart.getLife() > 0 && this.collides(entity, collisionDetection)) {
                         entityLifePart.setIsHit(true);
                         System.out.println("Collision detected between " + entity.getClass() + " and " + collisionDetection.getClass());
@@ -34,11 +33,11 @@ public class CollisionDetector implements IPostEntityProcessingService {
         }
 
         public Boolean collides(Entity entity1, Entity entity2) {
-            // get position parts on entities
+            // Get position parts on entities
             PositionPart entMov1 = entity1.getPart(PositionPart.class);
             PositionPart entMov2 = entity2.getPart(PositionPart.class);
 
-            // get distance between entities
+            // Get distance between entities
             float dx = (float) entMov1.getX() - (float) entMov2.getX();
             float dy = (float) entMov1.getY() - (float) entMov2.getY();
             float distanceBetween = (float) Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));

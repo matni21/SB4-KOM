@@ -7,8 +7,8 @@ public interface IBulletCreator {
     /**
      * Start the plugin.
      * <br />
-     * Pre-condition: Game running and shooter wants bullet to appear.<br />
-     * Post-condition: Bullet entity that is ready to be added to the game world.
+     * Pre-condition: Game is running and shooter needs a bullet to appear.<br />
+     * Post-condition: Bullet entity ready to be added in the world.
      *
      * @param shooter World of the game
      * @param gameData Data for the game

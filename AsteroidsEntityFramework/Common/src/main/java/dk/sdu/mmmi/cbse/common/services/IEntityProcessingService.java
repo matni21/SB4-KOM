@@ -11,8 +11,8 @@ public interface IEntityProcessingService {
     /**
      * Process the entity.
      * <br />
-     * Pre-condition: A game tick has passed since last call.<br />
-     * Post-condition: The entity has been processed and updated.
+     * Pre-condition: Game has parsed once since last call.<br />
+     * Post-condition: Entity has been processed and updated.
      *
      * @param gameData Data for the game
      * @param world World of the game

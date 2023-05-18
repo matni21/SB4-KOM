@@ -42,15 +42,16 @@ public class PlayerPlugin implements IGamePluginService{
         float y = gameData.getDisplayHeight() / 2;
         float radians = 3.1415f / 2;
 
-        //Remember to always set() everything for a shooter entity,
+        // Always set() everything for a shooter entity,
         // fx without a radius, the entity will be null, and bullets cannot be drawn.
+        // Everything needs to be set before shootingpart is added to playerShip.
         Entity playerShip = new Player();
         playerShip.setRadius(8);
         playerShip.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed, 0));
         playerShip.add(new PositionPart(x, y, radians));
         playerShip.add(new LifePart(5, 0));
         playerShip.setColor(new Color(0,1,0,1));
-        playerShip.add(new ShootingPart(0.05f));
+        playerShip.add(new ShootingPart(0.1f));
         
         return playerShip;
     }

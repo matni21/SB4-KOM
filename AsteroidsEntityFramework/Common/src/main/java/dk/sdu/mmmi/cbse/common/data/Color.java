@@ -19,7 +19,9 @@ public class Color {
     private float a;
 
     /**
-     * Takes a red, green, blue and alpha value
+     * Color entities
+     * <br>
+     * Takes a red, green, blue and an alpha value
      *
      */
     public Color(float r, float g, float b, float a) {
