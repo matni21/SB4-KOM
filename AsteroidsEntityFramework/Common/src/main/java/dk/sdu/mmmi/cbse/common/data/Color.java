@@ -32,7 +32,7 @@ public class Color {
     }
 
     public void takeDamage(Entity entity){
-        //flash white and red in a for loop
+        //flashes white and red and returns to original color
         Color originalColor = entity.getColor();
         for (int i = 0; i < 10; i++) {
             Color color = new Color(1, 1, 0, 1);

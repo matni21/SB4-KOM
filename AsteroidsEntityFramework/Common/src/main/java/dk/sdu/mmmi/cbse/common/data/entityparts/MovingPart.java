@@ -74,7 +74,7 @@ public class MovingPart implements EntityPart {
         float radians = positionPart.getRadians();
         float dt = gameData.getDelta();
 
-        // set start speed
+        // set start speed if not set
         if (!this.startSpeedSet){
             dx = (float) (Math.cos(radians) * this.startSpeed);
             dy = (float) (Math.sin(radians) * this.startSpeed);

@@ -19,8 +19,6 @@ public class BulletPlugin implements IGamePluginService, IBulletCreator {
 
     @Override
     public void start(GameData gameData, World world) {
-        //bullet = createBullet(gameData, shooter);
-        //world.addEntity(bullet);
     }
 
     /**
@@ -56,7 +54,7 @@ public class BulletPlugin implements IGamePluginService, IBulletCreator {
 
         bullet.setShapeX(new float[4]);
         bullet.setShapeY(new float[4]);
-        bullet.setColor(new Color(1,1,1,1));
+        bullet.setColor(new Color(1,0,1,1));
         bullet.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed, shootSpeed));
         bullet.add(new PositionPart(x, y, radians));
         bullet.add(new LifePart(1, 1));

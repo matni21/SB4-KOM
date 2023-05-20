@@ -22,7 +22,7 @@ public class BulletControlSystem implements IEntityProcessingService {
             lifePart.process(gameData, bullet);
 
             updateShape(bullet);
-
+            // Remove bullet if it has expired or is dead
             if (lifePart.getExpiration() <= 0 || lifePart.isDead()) {
                 world.removeEntity(bullet);
             }

@@ -44,7 +44,7 @@ public class PlayerPlugin implements IGamePluginService{
 
         // Always set() everything for a shooter entity,
         // fx without a radius, the entity will be null, and bullets cannot be drawn.
-        // Everything needs to be set before shootingpart is added to playerShip.
+        // Everything needs to be set before ShootingPart is added to playerShip.
         Entity playerShip = new Player();
         playerShip.setRadius(8);
         playerShip.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed, 0));

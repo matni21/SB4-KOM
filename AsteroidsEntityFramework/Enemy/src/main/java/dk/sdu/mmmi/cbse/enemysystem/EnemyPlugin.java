@@ -47,6 +47,7 @@ public class EnemyPlugin implements IGamePluginService {
         float acceleration = 150;
         float maxSpeed = 200;
         float rotationSpeed = 5;
+        float startSpeed = 20;
         float x = this.getRandomNumber(0, gameData.getDisplayWidth());
         float y = this.getRandomNumber(0, gameData.getDisplayHeight());
         float radians = this.getRandomNumber(0f, (float) (2 * Math.PI));
@@ -54,9 +55,11 @@ public class EnemyPlugin implements IGamePluginService {
         Entity enemyShip = new Enemy();
 
         enemyShip.setRadius(10);
+        //Set enemy to red color
         enemyShip.setColor(new Color(1,0,0,1));
-        enemyShip.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed, 20));
+        enemyShip.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed, startSpeed));
         enemyShip.add(new PositionPart(x, y, radians));
+        //Set enemy to have 1 life
         enemyShip.add(new LifePart(1, 0));
         enemyShip.add(new ShootingPart(0.1f));
 

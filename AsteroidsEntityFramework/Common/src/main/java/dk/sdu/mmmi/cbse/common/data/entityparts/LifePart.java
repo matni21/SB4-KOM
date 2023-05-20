@@ -65,6 +65,11 @@ public class LifePart implements EntityPart {
         }
         if (this.life <= 0) {
             this.dead = true;
+            if (!entity.getClass().getSimpleName().equals("Asteroid")){
+                if (!entity.getClass().getSimpleName().equals("Bullet")){
+                    System.out.println(entity.getClass().getSimpleName() + " is dead!");
+                }
+            }
         }
     }
 }

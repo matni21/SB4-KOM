@@ -26,7 +26,7 @@ public class ShootingPart implements EntityPart{
             return;
         }
 
-        System.out.println("Entity shoots!");
+        //System.out.println("Entity shoots!");
         this.shooting = true;
         this.cooldown = this.cooldownTime;
     }

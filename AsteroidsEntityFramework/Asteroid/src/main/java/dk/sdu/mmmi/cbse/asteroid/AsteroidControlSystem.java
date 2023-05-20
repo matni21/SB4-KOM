@@ -84,10 +84,10 @@ public class AsteroidControlSystem implements IEntityProcessingService {
         switch (lifePart.getLife()) {
             default:
             case 1:
-                distances = new float[] {12, 10, 12, 8, 4, 12, 11, 12};
+                distances = new float[] {10, 1, 1, 5, 8, 8, 9, 10};
                 break;
             case 2:
-                distances = new float[] {20, 7, 17, 12, 20, 20, 17, 19};
+                distances = new float[] {20, 10, 10, 15, 15, 18, 18, 20};
                 break;
             case 3:
                 distances = new float[] {27, 25, 23, 21, 21, 23, 25, 27};
