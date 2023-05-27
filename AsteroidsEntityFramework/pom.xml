@@ -47,7 +47,7 @@
                     <fork>true</fork>
                 </configuration>
             </plugin>
-            <!-- execute the resulting project -->
+            <!-- execute the project -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -70,13 +70,6 @@
                         <argument>-Djava.library.path=libs</argument>
                         <argument>--module-path=mods-mvn</argument>
                         <argument>--class-path=libs/*</argument>
-                        <!-- because spark.core is an automatic module and actually required,
-                        monitor.observer.zero would be resolved as well and does not need
-                        to be added explicitly;
-                        I still wanted to do it for clarity, but for some reason that results
-                        in "java.lang.module.FindException: Module monitor.observer.zero not found";
-                        strange... -->
-                        <!--<argument>&#45;&#45;add-modules=monitor.observer.zero</argument>-->
                         <argument>--module=Core/dk.sdu.mmmi.cbse.main.Main</argument>
                     </arguments>
                 </configuration>
@@ -86,7 +79,7 @@
 
     <profiles>
         <profile>
-            <!-- parent project should delete 'mods-mvn' -->
+            <!-- parent project should delete mods-mvn -->
             <id>parent-project</id>
             <activation>
                 <file>
@@ -113,7 +106,7 @@
             </build>
         </profile>
         <profile>
-            <!-- child projects should copy artifact into 'mods-mvn' -->
+            <!-- child projects should copy artifact into mods-mvn -->
             <id>child-project</id>
             <activation>
                 <file>

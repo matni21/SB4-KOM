@@ -42,7 +42,7 @@ public class EnemyControlSystem implements IEntityProcessingService {
                     (Math.sin(totalTime * controlRotateAmplifier + (Math.random() * 2f)) * controlGeneralAmplifier) > this.getRandomNumber(0.8f, controlGeneralAmplifier)
             );
             movingPart.setUp(
-                    this.getRandomNumber(0.01f, 1f) > this.getRandomNumber(0.5f, 1f)
+                    this.getRandomNumber(0.02f, 1f) > this.getRandomNumber(0.4f, 1f)
             );
 
             movingPart.process(gameData, enemy);

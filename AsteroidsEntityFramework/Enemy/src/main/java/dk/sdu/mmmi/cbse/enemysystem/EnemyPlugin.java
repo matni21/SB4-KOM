@@ -55,7 +55,7 @@ public class EnemyPlugin implements IGamePluginService {
         Entity enemyShip = new Enemy();
 
         enemyShip.setRadius(10);
-        //Set enemy to red color
+        //Set enemy color to red
         enemyShip.setColor(new Color(1,0,0,1));
         enemyShip.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed, startSpeed));
         enemyShip.add(new PositionPart(x, y, radians));

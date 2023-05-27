@@ -63,7 +63,7 @@ public class PlayerControlSystem implements IEntityProcessingService {
      * Pre-condition: An entity that can be drawn, and the game has parsed once since last call for that entity <br />
      * Post-condition: An updated shape location for that entity
      *
-     * @param entity Entity to update shape of
+     * @param entity Entity to update the shape of
      */
     private void updateShape(Entity entity) {
         float[] shapex = entity.getShapeX();
