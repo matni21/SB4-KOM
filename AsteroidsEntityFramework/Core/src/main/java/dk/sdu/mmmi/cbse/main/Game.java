@@ -14,10 +14,24 @@ import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
 import dk.sdu.mmmi.cbse.managers.GameInputProcessor;
 import dk.sdu.mmmi.cbse.common.util.SPILocator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Collection;
+import java.util.List;
 
 public class Game implements ApplicationListener {
+
+    private final List<IGamePluginService> gamePluginServices;
+    private final List<IEntityProcessingService> entityProcessors;
+    private final List<IPostEntityProcessingService> postEntityProcessors;
+
+    public Game(List<IGamePluginService> gamePluginServices, List<IEntityProcessingService> entityProcessors, List<IPostEntityProcessingService> postEntityProcessors) {
+        this.gamePluginServices = gamePluginServices;
+        this.entityProcessors = entityProcessors;
+        this.postEntityProcessors = postEntityProcessors;
+    }
 
     private static OrthographicCamera cam;
     private ShapeRenderer sr;
@@ -41,7 +55,7 @@ public class Game implements ApplicationListener {
         );
 
         // Create initial objects
-        for (IGamePluginService gamePlugin : getPluginServices()) {
+        for (IGamePluginService gamePlugin : gamePluginServices) {
             gamePlugin.start(gameData, world);
         }
     }
@@ -61,12 +75,14 @@ public class Game implements ApplicationListener {
     }
 
     private void update() {
-        for (IEntityProcessingService entityProcessorService : getEntityProcessingServices()) {
+        for (IEntityProcessingService entityProcessorService : entityProcessors) {
             entityProcessorService.process(gameData, world);
         }
-        for (IPostEntityProcessingService postEntityProcessorService : getPostEntityProcessingServices()) {
-            postEntityProcessorService.process(gameData, world);
+        for (IPostEntityProcessingService postEntityProcessors : postEntityProcessors) {
+            postEntityProcessors.process(gameData, world);
         }
+//        ((IProcessor) components.getBean("processorInjector")).process(gameData, world);
+//        ((IProcessor) components.getBean("postProcessorInjector")).process(gameData, world);
 
     }
 
@@ -105,15 +121,15 @@ public class Game implements ApplicationListener {
     public void dispose() {
     }
 
-    private Collection<? extends IGamePluginService> getPluginServices() {
-        return SPILocator.locateAll(IGamePluginService.class);
-    }
-
-    private Collection<? extends IEntityProcessingService> getEntityProcessingServices() {
-        return SPILocator.locateAll(IEntityProcessingService.class);
-    }
-
-    private Collection<? extends IPostEntityProcessingService> getPostEntityProcessingServices() {
-        return SPILocator.locateAll(IPostEntityProcessingService.class);
-    }
+//    private Collection<? extends IGamePluginService> getPluginServices() {
+//        return SPILocator.locateAll(IGamePluginService.class);
+//    }
+//
+//    private Collection<? extends IEntityProcessingService> getEntityProcessingServices() {
+//        return SPILocator.locateAll(IEntityProcessingService.class);
+//    }
+//
+//    private Collection<? extends IPostEntityProcessingService> getPostEntityProcessingServices() {
+//        return SPILocator.locateAll(IPostEntityProcessingService.class);
+//    }
 }
