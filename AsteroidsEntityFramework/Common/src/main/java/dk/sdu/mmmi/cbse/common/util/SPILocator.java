@@ -20,6 +20,7 @@ public class SPILocator {
 
         boolean printStatement = false;
 
+        // Create new loader if not already created
         if (loader == null) {
             loader = ServiceLoader.load(service);
             loadermap.put(service, loader);
@@ -28,6 +29,7 @@ public class SPILocator {
 
         List<T> list = new ArrayList<T>();
 
+        // Add all instances to list
         if (loader != null) {
             try {
                 for (T instance : loader) {
@@ -38,7 +40,7 @@ public class SPILocator {
             }
         }
 
-        // Print statement when since loader is not null
+        // Print statement when loader is not null
         if (printStatement) {
             System.out.println("Found " + list.size() + " implementations for interface: " + service.getName());
         }
