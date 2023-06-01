@@ -45,16 +45,14 @@ public class CollisionDetectorTest {
 
 
     /**
-     * Test of collides method, of class CollisionDetector.
+     * Test of collides method, from the CollisionDetector.
      */
     @Test
     public void testCollides() {
         System.out.println("collides");
-
         Boolean expResult = true;
         Boolean result = collisionDetector.collides(entity1, entity2);
         assertTrue(expResult, "Entities should collide");
-        // to build the project, change actual 'result' to just be true I don't know why it doesn't work
         assertEquals(expResult, true);
     }
 

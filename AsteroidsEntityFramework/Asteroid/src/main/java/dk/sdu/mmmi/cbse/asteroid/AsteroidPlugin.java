@@ -77,7 +77,7 @@ public class AsteroidPlugin implements IGamePluginService {
      * @param world World of the game
      * @param asteroid Asteroid to be split
      */
-    protected void createSplittetAsteroid(GameData gameData, World world, Entity asteroid) {
+    protected void createSplittedAsteroid(GameData gameData, World world, Entity asteroid) {
         world.removeEntity(asteroid);
 
         PositionPart positionPart = asteroid.getPart(PositionPart.class);

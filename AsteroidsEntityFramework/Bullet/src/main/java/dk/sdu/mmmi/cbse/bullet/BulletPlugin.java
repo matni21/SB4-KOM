@@ -69,6 +69,7 @@ public class BulletPlugin implements IGamePluginService, IBulletCreator {
 
     @Override
     public Entity create(Entity shooter, GameData gameData) {
+        // Create bullet
         return this.createBullet(gameData, shooter);
     }
 }

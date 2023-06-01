@@ -13,7 +13,6 @@ import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 
 public class EnemyPlugin implements IGamePluginService {
 
-    private Entity enemy;
 
     public EnemyPlugin() {
 

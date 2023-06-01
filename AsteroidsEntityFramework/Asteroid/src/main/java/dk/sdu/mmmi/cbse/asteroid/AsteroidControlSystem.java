@@ -20,6 +20,7 @@ public class AsteroidControlSystem implements IEntityProcessingService {
             MovingPart movingPart = asteroid.getPart(MovingPart.class);
             LifePart lifePart = asteroid.getPart(LifePart.class);
 
+            // Handle asteroid splitting
             this.handleAsteroidSplitting(gameData, world, asteroid);
 
             movingPart.process(gameData, asteroid);
@@ -55,8 +56,7 @@ public class AsteroidControlSystem implements IEntityProcessingService {
 
         // Create new split asteroids
         AsteroidPlugin asteroidPlugin = new AsteroidPlugin();
-        asteroidPlugin.createSplittetAsteroid(gameData, world, asteroid);
-
+        asteroidPlugin.createSplittedAsteroid(gameData, world, asteroid);
 
         return;
     }
@@ -80,15 +80,18 @@ public class AsteroidControlSystem implements IEntityProcessingService {
 
         LifePart lifePart = entity.getPart(LifePart.class);
 
-        float[] distances = new float[8];
+        float[] distances;
         switch (lifePart.getLife()) {
             default:
+            // Default asteroid
             case 1:
                 distances = new float[] {10, 1, 1, 5, 8, 8, 9, 10};
                 break;
+            // Medium asteroid
             case 2:
                 distances = new float[] {20, 10, 10, 15, 15, 18, 18, 20};
                 break;
+            // Large asteroid
             case 3:
                 distances = new float[] {27, 25, 23, 21, 21, 23, 25, 27};
                 break;

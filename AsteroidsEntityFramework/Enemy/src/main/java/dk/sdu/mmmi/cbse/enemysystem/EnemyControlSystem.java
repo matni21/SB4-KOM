@@ -24,7 +24,9 @@ public class EnemyControlSystem implements IEntityProcessingService {
 
     @Override
     public void process(GameData gameData, World world) {
+        //Loop through all entities of the Enemy class
         for (Entity enemy : world.getEntities(Enemy.class)) {
+            //Get parts from enemy entity
             PositionPart positionPart = enemy.getPart(PositionPart.class);
             MovingPart movingPart = enemy.getPart(MovingPart.class);
             ShootingPart shootingPart = enemy.getPart(ShootingPart.class);
@@ -35,6 +37,7 @@ public class EnemyControlSystem implements IEntityProcessingService {
             float controlRotateAmplifier = (float) (Math.random() * 2f) + 0.1f;
             float controlGeneralAmplifier = (float) (Math.random() * 2f) + 0.1f;
 
+            //Set moving to true if the corresponding key is pressed
             movingPart.setLeft(
                     (Math.sin(totalTime * controlRotateAmplifier + (Math.random() * 2f)) * controlGeneralAmplifier) < this.getRandomNumber(-0.3f, -controlGeneralAmplifier)
             );
@@ -101,4 +104,3 @@ public class EnemyControlSystem implements IEntityProcessingService {
         entity.setShapeY(shapey);
     }
 }
-

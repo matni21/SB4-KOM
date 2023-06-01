@@ -22,8 +22,7 @@ public class MovingPart implements EntityPart {
 
     private float dx, dy;
     private float deceleration, acceleration, startSpeed, maxSpeed, rotationSpeed;
-    private boolean left, right, up;
-    private boolean startSpeedSet;
+    private boolean left, right, up, startSpeedSet;
 
     public MovingPart(float deceleration, float acceleration, float maxSpeed, float rotationSpeed, float startSpeed) {
         this.deceleration = deceleration;

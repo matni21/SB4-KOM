@@ -9,8 +9,6 @@ public class ShootingPart implements EntityPart{
     private float cooldown;
     private boolean shooting;
 
-    private String bulletClass;
-
     public ShootingPart(float cooldownTime) {
         this.cooldownTime = cooldownTime;
     }
@@ -37,6 +35,7 @@ public class ShootingPart implements EntityPart{
 
     @Override
     public void process(GameData gameData, Entity entity) {
+        //if
         if (this.cooldown > 0) {
             this.cooldown -= gameData.getDelta();
             this.shooting = false;

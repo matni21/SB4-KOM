@@ -14,15 +14,12 @@ import dk.sdu.mmmi.cbse.common.data.GameData;
  */
 public class PositionPart implements EntityPart {
 
-    private float x;
-    private float y;
-    private float radians, radius;
+    private float x, y, radians;
 
     public PositionPart(float x, float y, float radians) {
         this.x = x;
         this.y = y;
         this.radians = radians;
-        this.radius = radius;
     }
 
     public float getX() {

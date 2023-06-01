@@ -5,6 +5,7 @@
  */
 package dk.sdu.mmmi.cbse.common.data.entityparts;
 
+import dk.sdu.mmmi.cbse.common.data.Color;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 
@@ -17,6 +18,7 @@ public class LifePart implements EntityPart {
     private int life;
     private boolean isHit, dead;
     private float expiration;
+    private Color color;
 
     public LifePart(int life, float expiration) {
         this.life = life;
@@ -62,6 +64,7 @@ public class LifePart implements EntityPart {
         if (this.isHit) {
             this.life -= 1;
             this.isHit = false;
+            //color.takeDamage(entity);
         }
         if (this.life <= 0) {
             this.dead = true;

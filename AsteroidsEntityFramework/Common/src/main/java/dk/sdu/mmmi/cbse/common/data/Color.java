@@ -21,7 +21,7 @@ public class Color {
     /**
      * Color entities
      * <br>
-     * Takes a red, green, blue and an alpha value
+     * Color takes rgb and an alpha values
      *
      */
     public Color(float r, float g, float b, float a) {

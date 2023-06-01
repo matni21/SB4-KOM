@@ -1,5 +1,6 @@
 package dk.sdu.mmmi.cbse.main;
 
+import dk.sdu.mmmi.cbse.common.services.IBulletCreator;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
@@ -40,5 +41,10 @@ public class ModuleConfig {
     public List<IPostEntityProcessingService> postEntityProcessingServices() {
         //return locateAll(IPostEntityProcessingService.class);
         return ServiceLoader.load(IPostEntityProcessingService.class).stream().map(ServiceLoader.Provider::get).collect(toList());
+    }
+
+    @Bean
+    public List<IBulletCreator> bulletCreators() {
+        return ServiceLoader.load(IBulletCreator.class).stream().map(ServiceLoader.Provider::get).collect(toList());
     }
 }

@@ -30,10 +30,12 @@ public class PlayerControlSystem implements IEntityProcessingService {
             ShootingPart shootingPart = player.getPart(ShootingPart.class);
             LifePart lifePart = player.getPart(LifePart.class);
 
+            //Set moving to true if the corresponding key is pressed
             movingPart.setLeft(gameData.getKeys().isDown(GameKeys.LEFT));
             movingPart.setRight(gameData.getKeys().isDown(GameKeys.RIGHT));
             movingPart.setUp(gameData.getKeys().isDown(GameKeys.UP));
 
+            //Process the parts
             movingPart.process(gameData, player);
             positionPart.process(gameData, player);
             shootingPart.process(gameData, player);
@@ -43,12 +45,12 @@ public class PlayerControlSystem implements IEntityProcessingService {
             shootingPart.setShooting(gameData.getKeys().isDown(GameKeys.SPACE));
             if (shootingPart.getShooting()) {
                 Collection<IBulletCreator> bulletPlugins = SPILocator.locateAll(IBulletCreator.class);
-
+                //Create a bullet for each plugin
                 for (IBulletCreator bulletPlugin : bulletPlugins) {
                     world.addEntity(bulletPlugin.create(player, gameData));
                 }
             }
-
+            //Remove the player if it is dead
             if (lifePart.isDead()) {
                 world.removeEntity(player);
             }
@@ -88,5 +90,4 @@ public class PlayerControlSystem implements IEntityProcessingService {
         entity.setShapeX(shapex);
         entity.setShapeY(shapey);
     }
-
 }
